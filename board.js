@@ -81,6 +81,10 @@ class Board {
       }
     }
   };
+  Bomb (x,y) {
+      this.board[x][y] = "B"
+      this.showBoard();
+  }
   // return true if we can place a ship else return false
   // loop through the possible coordinates and see if there is a ship present
   // if there is a ship immediately return false
@@ -91,7 +95,7 @@ class Board {
 
 module.exports = Board
 
-let game = new Board();
+
 // game.createEmptyBoard();
 // game.placeShip(5, 5, 3, "horiz");
 

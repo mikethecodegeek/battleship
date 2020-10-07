@@ -4,6 +4,7 @@
 // Keep track of damage taken
     // Total health
     // Keep track of spot that was hit (possibly be part of the board but put here for now)
+//randomize ship placement  
 
 // Methods
 // TakeHit
@@ -32,17 +33,17 @@ class Ship {
     }
 }
 
-let first = new Ship(3);
-let sec = new Ship(4);
+// let first = new Ship(3);
+// let sec = new Ship(4);
 
-first.placeOnBoard(5,5,'horiz');
-sec.placeOnBoard(3,3,'vert')
+// first.placeOnBoard(5,5,'horiz');
+// sec.placeOnBoard(3,3,'vert')
 
-let game= new Board;
-game.createEmptyBoard()
-game.placeShip(first)
-game.placeShip(sec)
+// let game= new Board;
+
+// game.placeShip(first)
+// game.placeShip(sec)
 
 
-game.showBoard()
 
+module.exports = Ship;
