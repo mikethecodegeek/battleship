@@ -40,19 +40,21 @@ class Board {
       }
 
       placeShip = (x,y,shipLength, orientation) => {
-          if (orientation == 'horiz') {
-              for (let a=0; a< shipLength; a++) {
-                  this.board[x][y] = 'S';
-                  y++;
+          if (this.boundaries(x,y,shipLength, orientation)) {
+              if (orientation == 'horiz') {
+                  for (let a=0; a< shipLength; a++) {
+                      this.board[x][y] = 'S';
+                      y++;
+                  }
+              } else {
+                for (let a=0; a< shipLength; a++) {
+                    this.board[x][y] = 'S';
+                    x++;
+                }
               }
-          } else {
-            for (let a=0; a< shipLength; a++) {
-                this.board[x][y] = 'S';
-                x++;
-            }
           }
     }
-        boundaries() {
+        boundaries(x,y,shipLength, orientation) {
             // return true if we can place a ship else return false
             // loop through the possible coordinates and see if there is a ship present
             // if there is a ship immediately return false
@@ -60,7 +62,20 @@ class Board {
             // also if place horiz - check and see if x+ shiplength > board length
             // if place vert - check and see if y+shiplength > board length
 
-            
+            if (orientation == 'horiz') {
+                for (let a=0; a< shipLength; a++) {
+                    if (this.board[x][y] == 'S' || this.board[x][y] == 'X' || y> this.board.length) {
+                        return false
+                    } 
+                    y++;
+                }
+            } else {
+                if (this.board[x][y] == 'S' || this.board[x][y] == 'X' || x> this.board.length) {
+                    return false
+                } 
+                x++;
+            }
+            return true;
         }
 }
 
@@ -68,5 +83,5 @@ let game = new Board;
 game.createEmptyBoard();
 game.placeShip(5,5,3,'horiz');
 
-game.placeShip(2,7,3,'vert')
+game.placeShip(2,7,4,'vert')
 game.showBoard()
